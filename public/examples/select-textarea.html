@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример: Select и textarea</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px 24px;
+        font-family: system-ui, sans-serif;
+        background: #eef2f7;
+        color: #1a2332;
+      }
+
+      .panel {
+        box-sizing: border-box;
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 28px;
+        background: #fff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .panel h1 {
+        margin: 0 0 8px;
+        font-size: 24px;
+      }
+
+      .panel-lead {
+        margin: 0 0 24px;
+        color: #5a667a;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .field {
+        margin: 0 0 18px;
+      }
+
+      .field:last-child {
+        margin-bottom: 0;
+      }
+
+      .field__label {
+        display: block;
+        margin: 0 0 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .field__control {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d0d7de;
+        border-radius: 8px;
+        background: #fff;
+        color: #1a2332;
+        font: inherit;
+        font-size: 16px;
+        outline: none;
+      }
+
+      .field__control:focus {
+        border-color: #2965f1;
+        box-shadow: 0 0 0 3px rgba(41, 101, 241, 0.18);
+      }
+
+      textarea.field__control {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .field__hint {
+        margin: 8px 0 0;
+        font-size: 13px;
+        color: #5a667a;
+      }
+
+      .field__error {
+        margin: 8px 0 0;
+        font-size: 13px;
+        color: #d4380d;
+      }
+
+      .field--error .field__label {
+        color: #d4380d;
+      }
+
+      .field--error .field__control {
+        border-color: #d4380d;
+        background: #fff7f5;
+      }
+
+      .field--error .field__control:focus {
+        border-color: #d4380d;
+        box-shadow: 0 0 0 3px rgba(212, 56, 13, 0.16);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Обратная связь</h1>
+      <p class="panel-lead">Select и textarea в одном стиле с инпутом: фокус и ошибка.</p>
+
+      <div class="field">
+        <label class="field__label" for="topic">Тема</label>
+        <select class="field__control" id="topic" name="topic">
+          <option value="">Выберите тему</option>
+          <option value="bug">Ошибка на сайте</option>
+          <option value="idea">Идея улучшения</option>
+          <option value="other">Другое</option>
+        </select>
+        <p class="field__hint">Так мы быстрее направим сообщение нужному человеку</p>
+      </div>
+
+      <div class="field field--error">
+        <label class="field__label" for="message">Сообщение</label>
+        <textarea
+          class="field__control"
+          id="message"
+          name="message"
+          aria-invalid="true"
+          aria-describedby="message-error"
+          placeholder="Опишите ситуацию"
+        ></textarea>
+        <p class="field__error" id="message-error">Напишите хотя бы несколько предложений</p>
+      </div>
+    </div>
+  </body>
+</html>

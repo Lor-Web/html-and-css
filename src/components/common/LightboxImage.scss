@@ -1,0 +1,40 @@
+.lightbox-image {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.lightbox-image .ant-image {
+  width: 100%;
+  display: block;
+}
+
+.lightbox-image__thumb {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: #fff;
+  object-fit: contain;
+  max-height: 320px;
+  cursor: zoom-in;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.lightbox-image:hover .lightbox-image__thumb {
+  box-shadow: var(--shadow-soft);
+}
+
+.lightbox-image__mask {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ant-image-preview-root .ant-image-preview-img {
+  max-width: min(96vw, 1100px);
+  max-height: 88vh;
+  object-fit: contain;
+}

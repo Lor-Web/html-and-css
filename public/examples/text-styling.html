@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример: Стилизация текста</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px 24px;
+        font-family: Georgia, 'Times New Roman', serif;
+        background: #eef2f7;
+        color: #1a2332;
+      }
+
+      .article {
+        box-sizing: border-box;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 32px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #2965f1;
+        font-family: system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .article h1 {
+        margin: 0 0 16px;
+        font-size: 34px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .lead {
+        margin: 0 0 20px;
+        color: #5a667a;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .text {
+        margin: 0 0 16px;
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .accent {
+        color: #f06529;
+        font-weight: 700;
+      }
+
+      .highlight {
+        background: #fff3bf;
+        padding: 0 4px;
+        border-radius: 4px;
+      }
+
+      .muted {
+        color: #5a667a;
+        font-style: italic;
+      }
+
+      .quote {
+        margin: 24px 0;
+        padding: 16px 20px;
+        border-left: 4px solid #2965f1;
+        background: #f5f8fc;
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .quote cite {
+        display: block;
+        margin-top: 10px;
+        color: #5a667a;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+      }
+
+      .article a {
+        color: #2965f1;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .note {
+        margin: 20px 0 0;
+        padding-top: 16px;
+        border-top: 1px solid #d0d7de;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        color: #5a667a;
+      }
+
+      .note .tag {
+        color: #2965f1;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="article">
+      <p class="eyebrow">Практика типографики</p>
+
+      <h1>
+        Как <span class="accent">маленькие детали</span> делают текст живым
+      </h1>
+
+      <p class="lead">
+        В этом задании вы научитесь выделять важные слова, настраивать ритм
+        абзацев и аккуратно оформлять цитаты.
+      </p>
+
+      <p class="text">
+        Хорошая вёрстка текста — это не только размер шрифта. Иногда достаточно
+        <span class="highlight">подсветить ключевую мысль</span>, а иногда —
+        сделать акцент цветом на одном слове.
+      </p>
+
+      <p class="text">
+        Строка с пояснением может быть
+        <span class="muted">тише основного текста</span>, чтобы не спорить с
+        заголовком. А ссылка на
+        <a href="https://developer.mozilla.org/ru/docs/Web/CSS">справочник CSS</a>
+        поможет продолжить обучение.
+      </p>
+
+      <blockquote class="quote">
+        Типографика — это то, что делает чтение удобным ещё до того, как мы
+        начинаем вникать в смысл.
+        <cite>— Команда Markup Lab</cite>
+      </blockquote>
+
+      <p class="note">
+        <span class="tag">Совет:</span>
+        не выделяйте слишком много фрагментов — иначе акцент перестанет работать.
+      </p>
+    </article>
+  </body>
+</html>

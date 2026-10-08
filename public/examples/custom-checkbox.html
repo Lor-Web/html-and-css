@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример: Стилизация чекбокса</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px 24px;
+        font-family: system-ui, sans-serif;
+        background: #eef2f7;
+        color: #1a2332;
+      }
+
+      .panel {
+        box-sizing: border-box;
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 28px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .panel h1 {
+        margin: 0 0 8px;
+        font-size: 24px;
+      }
+
+      .panel-lead {
+        margin: 0 0 22px;
+        color: #5a667a;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .check {
+        display: block;
+        position: relative;
+        margin: 0 0 14px;
+        padding-left: 36px;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 24px;
+        user-select: none;
+      }
+
+      .check:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .check__input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+      }
+
+      .check__box {
+        box-sizing: border-box;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid #d0d7de;
+        border-radius: 6px;
+        background: #ffffff;
+      }
+
+      .check__input:focus + .check__box {
+        border-color: #2965f1;
+        box-shadow: 0 0 0 3px rgba(41, 101, 241, 0.2);
+      }
+
+      .check__input:checked + .check__box {
+        border-color: #f06529;
+        background: #f06529;
+      }
+
+      .check__box::after {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid #ffffff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        opacity: 0;
+      }
+
+      .check__input:checked + .check__box::after {
+        opacity: 1;
+      }
+
+      .check__text {
+        color: #1a2332;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Уведомления</h1>
+      <p class="panel-lead">Выберите, о чём вам писать. Чекбоксы ниже — кастомные.</p>
+
+      <label class="check">
+        <input class="check__input" type="checkbox" name="news" checked />
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">Новости курса</span>
+      </label>
+
+      <label class="check">
+        <input class="check__input" type="checkbox" name="tasks" />
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">Напоминания о заданиях</span>
+      </label>
+
+      <label class="check">
+        <input class="check__input" type="checkbox" name="digest" checked />
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">Еженедельный дайджест</span>
+      </label>
+
+      <label class="check">
+        <input class="check__input" type="checkbox" name="offers" />
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">Специальные предложения</span>
+      </label>
+    </div>
+  </body>
+</html>

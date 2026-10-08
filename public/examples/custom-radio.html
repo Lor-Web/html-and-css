@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример: Кастомный radio</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px 24px;
+        font-family: system-ui, sans-serif;
+        background: #eef2f7;
+        color: #1a2332;
+      }
+
+      .panel {
+        box-sizing: border-box;
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 28px;
+        background: #fff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .panel h1 {
+        margin: 0 0 8px;
+        font-size: 24px;
+      }
+
+      .panel-lead {
+        margin: 0 0 22px;
+        color: #5a667a;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .radio {
+        display: block;
+        position: relative;
+        margin: 0 0 14px;
+        padding-left: 36px;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 24px;
+        user-select: none;
+      }
+
+      .radio:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .radio__input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+      }
+
+      .radio__circle {
+        box-sizing: border-box;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid #d0d7de;
+        border-radius: 50%;
+        background: #fff;
+      }
+
+      .radio__input:focus + .radio__circle {
+        border-color: #2965f1;
+        box-shadow: 0 0 0 3px rgba(41, 101, 241, 0.2);
+      }
+
+      .radio__input:checked + .radio__circle {
+        border-color: #f06529;
+      }
+
+      .radio__circle::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #f06529;
+        opacity: 0;
+      }
+
+      .radio__input:checked + .radio__circle::after {
+        opacity: 1;
+      }
+
+      .radio__text {
+        color: #1a2332;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Формат обучения</h1>
+      <p class="panel-lead">Выберите один вариант. Все переключатели в одной группе.</p>
+
+      <label class="radio">
+        <input class="radio__input" type="radio" name="format" value="online" checked />
+        <span class="radio__circle" aria-hidden="true"></span>
+        <span class="radio__text">Онлайн</span>
+      </label>
+
+      <label class="radio">
+        <input class="radio__input" type="radio" name="format" value="offline" />
+        <span class="radio__circle" aria-hidden="true"></span>
+        <span class="radio__text">Очно</span>
+      </label>
+
+      <label class="radio">
+        <input class="radio__input" type="radio" name="format" value="hybrid" />
+        <span class="radio__circle" aria-hidden="true"></span>
+        <span class="radio__text">Гибрид</span>
+      </label>
+    </div>
+  </body>
+</html>

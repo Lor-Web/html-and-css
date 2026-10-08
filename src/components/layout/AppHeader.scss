@@ -1,0 +1,136 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header__inner {
+  width: min(1560px, calc(100% - 2rem));
+  margin: 0 auto;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.app-header__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--html-orange), var(--css-blue));
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 35%, transparent);
+  animation: float-soft 4.5s ease-in-out infinite;
+}
+
+.app-header__mark-html {
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.app-header__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.app-header__name {
+  font-family: var(--font-display) !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+}
+
+.app-header__tagline {
+  font-size: 0.75rem !important;
+}
+
+.app-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.app-header__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.app-header__link:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg-muted) 80%, transparent);
+}
+
+.app-header__link.is-active {
+  color: var(--text);
+  background: var(--bg-elevated);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.app-header__progress {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+.app-header__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-2);
+}
+
+@media (min-width: 900px) {
+  .app-header__progress {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-header__inner {
+    flex-wrap: wrap;
+    padding: 0.65rem 0;
+  }
+
+  .app-header__nav {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+  }
+
+  .app-header__tagline {
+    display: none;
+  }
+
+  .app-header__link span {
+    font-size: 0.9rem;
+  }
+}
