@@ -1,7 +1,14 @@
-import { CheckCircleOutlined, PlayCircleOutlined, ReloadOutlined } from '@ant-design/icons'
+import {
+  CheckCircleOutlined,
+  CompressOutlined,
+  ExpandOutlined,
+  PlayCircleOutlined,
+  ReloadOutlined,
+} from '@ant-design/icons'
 import { Alert, Button, Collapse, Flex, List, Space, Tag, Typography, message } from 'antd'
 import { useAtom, useAtomValue } from 'jotai'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Group, Panel, Separator, useDefaultLayout } from 'react-resizable-panels'
 import type { Task } from '@/types/content'
 import { progressAtom, upsertTaskProgressAtom } from '@/store/progressAtom'
@@ -27,6 +34,7 @@ export function CodeSandbox({ task }: CodeSandboxProps) {
   const [passedChecks, setPassedChecks] = useState<string[]>(saved?.passedChecks ?? [])
   const [checked, setChecked] = useState(Boolean(saved?.completed))
   const [openPanels, setOpenPanels] = useState<string[]>(['goals'])
+  const [previewFullscreen, setPreviewFullscreen] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const checksPanelRef = useRef<HTMLDivElement>(null)
 
@@ -36,7 +44,25 @@ export function CodeSandbox({ task }: CodeSandboxProps) {
 
   useEffect(() => {
     setOpenPanels(['goals'])
+    setPreviewFullscreen(false)
   }, [task.id])
+
+  useEffect(() => {
+    if (!previewFullscreen) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setPreviewFullscreen(false)
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [previewFullscreen])
 
   const { defaultLayout: workLayout, onLayoutChanged: onWorkLayoutChanged } = useDefaultLayout({
     id: 'sandbox-work',
@@ -109,6 +135,40 @@ export function CodeSandbox({ task }: CodeSandboxProps) {
     })
   }
 
+  const previewPanel = (
+    <div
+      className={`sandbox__panel sandbox__preview-wrap${previewFullscreen ? ' is-fullscreen' : ''}`}
+    >
+      <div className="sandbox__preview-bar">
+        <Typography.Text type="secondary">Превью</Typography.Text>
+        <Space size={8}>
+          <Button
+            icon={previewFullscreen ? <CompressOutlined /> : <ExpandOutlined />}
+            onClick={() => setPreviewFullscreen((value) => !value)}
+            aria-label={
+              previewFullscreen ? 'Свернуть превью' : 'Открыть превью на весь экран'
+            }
+          >
+            {previewFullscreen ? 'Свернуть' : 'На весь экран'}
+          </Button>
+          <Button icon={<ReloadOutlined />} onClick={resetStarter}>
+            Сбросить
+          </Button>
+          <Button type="primary" icon={<PlayCircleOutlined />} onClick={handleCheck}>
+            Проверить
+          </Button>
+        </Space>
+      </div>
+      <iframe
+        ref={iframeRef}
+        className="sandbox__preview"
+        title={`Превью: ${task.title}`}
+        sandbox="allow-same-origin"
+        srcDoc={srcDoc}
+      />
+    </div>
+  )
+
   return (
     <div className="sandbox">
       <div className="sandbox__workspace">
@@ -165,26 +225,14 @@ export function CodeSandbox({ task }: CodeSandboxProps) {
           <Separator className="sandbox__separator sandbox__separator--vertical" />
 
           <Panel id="preview" defaultSize="48%" minSize="28%">
-            <div className="sandbox__panel sandbox__preview-wrap">
-              <div className="sandbox__preview-bar">
-                <Typography.Text type="secondary">Превью</Typography.Text>
-                <Space size={8}>
-                  <Button icon={<ReloadOutlined />} onClick={resetStarter}>
-                    Сбросить
-                  </Button>
-                  <Button type="primary" icon={<PlayCircleOutlined />} onClick={handleCheck}>
-                    Проверить
-                  </Button>
-                </Space>
-              </div>
-              <iframe
-                ref={iframeRef}
-                className="sandbox__preview"
-                title={`Превью: ${task.title}`}
-                sandbox="allow-same-origin"
-                srcDoc={srcDoc}
-              />
-            </div>
+            {previewFullscreen ? (
+              <>
+                <div className="sandbox__panel sandbox__preview-placeholder" aria-hidden />
+                {createPortal(previewPanel, document.body)}
+              </>
+            ) : (
+              previewPanel
+            )}
           </Panel>
         </Group>
       </div>

@@ -91,6 +91,25 @@
   flex-direction: column;
 }
 
+.sandbox__preview-wrap.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.sandbox__preview-placeholder {
+  min-height: 100%;
+  pointer-events: none;
+  opacity: 0;
+}
+
 .sandbox__preview-bar {
   display: flex;
   align-items: center;
@@ -267,7 +286,7 @@
   }
 
   .sandbox__editors,
-  .sandbox__preview-wrap {
+  .sandbox__preview-wrap:not(.is-fullscreen) {
     min-height: 360px;
   }
 
