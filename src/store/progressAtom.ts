@@ -10,8 +10,11 @@ export interface TaskProgress {
 }
 
 export interface QuizProgress {
-  answers: Record<string, number>
+  /** ID вопросов, на которые дан верный ответ */
+  correctIds: string[]
   score: number
+  /** Число неверных попыток ответа */
+  wrongCount: number
   completed: boolean
   completedAt?: string
 }
@@ -54,28 +57,67 @@ export const upsertTaskProgressAtom = atom(
   },
 )
 
-export const saveQuizResultAtom = atom(
+export const markQuizQuestionCorrectAtom = atom(
   null,
   (
     get,
     set,
-    payload: { quizId: string; answers: Record<string, number>; score: number },
+    payload: { quizId: string; questionId: string; totalQuestions: number },
   ) => {
     const current = get(progressAtom)
+    const prev = current.quizzes[payload.quizId]
+    const correctIds = Array.from(
+      new Set([...(prev?.correctIds ?? []), payload.questionId]),
+    )
+    const score = correctIds.length
+    const completed = score >= payload.totalQuestions
+
     set(progressAtom, {
       ...current,
       quizzes: {
         ...current.quizzes,
         [payload.quizId]: {
-          answers: payload.answers,
-          score: payload.score,
-          completed: true,
-          completedAt: new Date().toISOString(),
+          correctIds,
+          score,
+          wrongCount: prev?.wrongCount ?? 0,
+          completed,
+          completedAt: completed
+            ? (prev?.completedAt ?? new Date().toISOString())
+            : undefined,
         },
       },
     })
   },
 )
+
+export const markQuizQuestionWrongAtom = atom(
+  null,
+  (get, set, quizId: string) => {
+    const current = get(progressAtom)
+    const prev = current.quizzes[quizId]
+
+    set(progressAtom, {
+      ...current,
+      quizzes: {
+        ...current.quizzes,
+        [quizId]: {
+          correctIds: prev?.correctIds ?? [],
+          score: prev?.score ?? 0,
+          wrongCount: (prev?.wrongCount ?? 0) + 1,
+          completed: prev?.completed ?? false,
+          completedAt: prev?.completedAt,
+        },
+      },
+    })
+  },
+)
+
+export const resetQuizProgressAtom = atom(null, (get, set, quizId: string) => {
+  const current = get(progressAtom)
+  const next = { ...current.quizzes }
+  delete next[quizId]
+  set(progressAtom, { ...current, quizzes: next })
+})
 
 export const markArticleReadAtom = atom(null, (get, set, articleId: string) => {
   const current = get(progressAtom)

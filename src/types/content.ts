@@ -50,7 +50,8 @@ export interface QuizQuestion {
   id: string
   prompt: string
   options: string[]
-  correctIndex: number
+  /** Индексы правильных вариантов (один или несколько) */
+  correctIndexes: number[]
   explanation: string
 }
 
@@ -59,6 +60,7 @@ export interface Quiz {
   title: string
   description: string
   difficulty: Difficulty
+  tags?: string[]
   questions: QuizQuestion[]
 }
 
