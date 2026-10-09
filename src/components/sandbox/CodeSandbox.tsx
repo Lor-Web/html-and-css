@@ -7,6 +7,7 @@ import type { Task } from '@/types/content'
 import { progressAtom, upsertTaskProgressAtom } from '@/store/progressAtom'
 import { buildPreviewDocument, runTaskChecks } from '@/utils/taskChecks'
 import { LightboxImage } from '@/components/common/LightboxImage'
+import { RichGoalText } from '@/components/common/RichGoalText'
 import { SandboxCodeEditor } from './SandboxCodeEditor'
 import './CodeSandbox.scss'
 
@@ -203,7 +204,9 @@ export function CodeSandbox({ task }: CodeSandboxProps) {
                   dataSource={task.goals}
                   renderItem={(item) => (
                     <List.Item>
-                      <Typography.Text>{item}</Typography.Text>
+                      <Typography.Text>
+                        <RichGoalText text={item} />
+                      </Typography.Text>
                     </List.Item>
                   )}
                 />
@@ -283,7 +286,7 @@ export function CodeSandbox({ task }: CodeSandboxProps) {
                           icon={ok ? <CheckCircleOutlined /> : undefined}
                           style={{ whiteSpace: 'normal', padding: '0.35rem 0.55rem' }}
                         >
-                          {check.label}
+                          <RichGoalText text={check.label} />
                         </Tag>
                       )
                     })}
