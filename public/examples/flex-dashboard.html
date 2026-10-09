@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример: Дашборд на Flexbox</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: system-ui, sans-serif;
+        background: #eef2f7;
+        color: #1a2332;
+      }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        background: #ffffff;
+        border-bottom: 1px solid #d0d7de;
+      }
+
+      .app-header__brand {
+        font-size: 18px;
+        font-weight: 800;
+        color: #f06529;
+      }
+
+      .app-header__actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .app-header__actions a {
+        color: #2965f1;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .app-body {
+        display: flex;
+        flex: 1 1 auto;
+        gap: 24px;
+        width: 100%;
+        max-width: 1100px;
+        margin: 24px auto;
+        padding: 0 24px;
+        min-height: 0;
+      }
+
+      .app-nav {
+        flex: 0 0 200px;
+        align-self: flex-start;
+        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .app-nav h2 {
+        margin: 0 0 12px;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #5a667a;
+      }
+
+      .app-nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .app-nav li + li {
+        margin-top: 8px;
+      }
+
+      .app-nav a {
+        color: #1a2332;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .app-main {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        gap: 16px;
+        min-width: 0;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .stat {
+        flex: 1 1 140px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .stat__label {
+        margin: 0 0 6px;
+        color: #5a667a;
+        font-size: 13px;
+      }
+
+      .stat__value {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 800;
+        color: #2965f1;
+      }
+
+      .panel {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+        min-height: 220px;
+      }
+
+      .panel__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .panel__head h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .panel__badge {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #eef3ff;
+        color: #2965f1;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .tasks {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .task {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #e8eef6;
+      }
+
+      .task:last-child {
+        border-bottom: 0;
+      }
+
+      .task__title {
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .task__status {
+        flex-shrink: 0;
+        color: #5a667a;
+        font-size: 13px;
+      }
+
+      .task__status.is-done {
+        color: #1f9d6a;
+        font-weight: 700;
+      }
+
+      .app-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 24px;
+        background: #ffffff;
+        border-top: 1px solid #d0d7de;
+        color: #5a667a;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__brand">Markup Lab</div>
+      <div class="app-header__actions">
+        <a href="#">Профиль</a>
+        <a href="#">Выйти</a>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="app-nav">
+        <h2>Меню</h2>
+        <ul>
+          <li><a href="#">Дашборд</a></li>
+          <li><a href="#">Задания</a></li>
+          <li><a href="#">Квизы</a></li>
+          <li><a href="#">Шпаргалки</a></li>
+        </ul>
+      </aside>
+
+      <main class="app-main">
+        <ul class="stats">
+          <li class="stat">
+            <p class="stat__label">Задания</p>
+            <p class="stat__value">12</p>
+          </li>
+          <li class="stat">
+            <p class="stat__label">Квизы</p>
+            <p class="stat__value">8</p>
+          </li>
+          <li class="stat">
+            <p class="stat__label">Прогресс</p>
+            <p class="stat__value">64%</p>
+          </li>
+        </ul>
+
+        <section class="panel">
+          <div class="panel__head">
+            <h1>Ближайшие задания</h1>
+            <span class="panel__badge">3 активных</span>
+          </div>
+          <ul class="tasks">
+            <li class="task">
+              <p class="task__title">Шапка на Flexbox</p>
+              <span class="task__status is-done">Готово</span>
+            </li>
+            <li class="task">
+              <p class="task__title">Карточки тарифов</p>
+              <span class="task__status">В работе</span>
+            </li>
+            <li class="task">
+              <p class="task__title">Сайдбар и контент</p>
+              <span class="task__status">Новое</span>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer class="app-footer">
+      <span>Markup Lab</span>
+      <span>Flexbox · практика</span>
+    </footer>
+  </body>
+</html>

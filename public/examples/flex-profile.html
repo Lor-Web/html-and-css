@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пример: Карточка профиля</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui, sans-serif;
+        background: #eef2f7;
+        color: #1a2332;
+      }
+
+      .profile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        max-width: 420px;
+        padding: 24px;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+      }
+
+      .avatar {
+        flex-shrink: 0;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: #2965f1;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .info {
+        min-width: 0;
+      }
+
+      .name {
+        margin: 0 0 4px;
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      .role {
+        margin: 0;
+        color: #5a667a;
+        font-size: 15px;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="profile">
+      <div class="avatar" aria-hidden="true">АИ</div>
+      <div class="info">
+        <h1 class="name">Анна Иванова</h1>
+        <p class="role">HTML · CSS · начинающий верстальщик</p>
+      </div>
+    </article>
+  </body>
+</html>
