@@ -1,5 +1,6 @@
 import {
   BookOutlined,
+  ControlOutlined,
   FormOutlined,
   HomeOutlined,
   MoonOutlined,
@@ -19,6 +20,7 @@ const links = [
   { to: '/', label: 'Главная', icon: <HomeOutlined />, end: true },
   { to: '/tasks', label: 'Задания', icon: <CodeOutlined /> },
   { to: '/quizzes', label: 'Квизы', icon: <FormOutlined /> },
+  { to: '/cheatsheets', label: 'Шпаргалки', icon: <ControlOutlined /> },
   { to: '/articles', label: 'Статьи', icon: <BookOutlined /> },
 ]
 

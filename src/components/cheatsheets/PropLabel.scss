@@ -1,0 +1,34 @@
+.prop-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.prop-label__text {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.prop-label__hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--accent-2) 75%, var(--text-secondary));
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: help;
+  opacity: 0.85;
+  transition: opacity var(--transition), color var(--transition);
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    color: var(--accent-2);
+    outline: none;
+  }
+}

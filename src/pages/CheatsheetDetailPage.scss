@@ -1,0 +1,29 @@
+.cheatsheet-detail__head {
+  margin-bottom: 1.5rem;
+}
+
+.cheatsheet-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--accent-2);
+  }
+}
+
+.cheatsheet-detail__head h1 {
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.cheatsheet-detail__head p {
+  margin: 0;
+  color: var(--text-secondary);
+  max-width: 44rem;
+  line-height: 1.55;
+}

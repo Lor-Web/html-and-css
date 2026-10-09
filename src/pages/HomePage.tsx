@@ -1,4 +1,10 @@
-import { ArrowRightOutlined, BookOutlined, CodeOutlined, FormOutlined } from '@ant-design/icons'
+import {
+  ArrowRightOutlined,
+  BookOutlined,
+  CodeOutlined,
+  ControlOutlined,
+  FormOutlined,
+} from '@ant-design/icons'
 import { Button, Col, Flex, Progress, Row, Typography } from 'antd'
 import { useAtomValue } from 'jotai'
 import { Link } from 'react-router-dom'
@@ -24,11 +30,18 @@ const tracks = [
     accent: 'blue',
   },
   {
+    to: '/cheatsheets',
+    title: 'Шпаргалки',
+    text: 'Интерактивные песочницы: крутите свойства и смотрите эффект.',
+    icon: <ControlOutlined />,
+    accent: 'mixed',
+  },
+  {
     to: '/articles',
     title: 'Статьи',
     text: 'Короткие материалы по семантике, боксовой модели и layout.',
     icon: <BookOutlined />,
-    accent: 'mixed',
+    accent: 'orange',
   },
 ]
 
@@ -49,8 +62,8 @@ export function HomePage() {
           <p className="home-hero__eyebrow">Практика вёрстки</p>
           <h1 className="home-hero__brand">Markup Lab</h1>
           <p className="home-hero__lead">
-            Учите HTML и CSS через задания в песочнице, квизы и короткие статьи. Весь прогресс
-            хранится локально в браузере.
+            Учите HTML и CSS через задания, квизы, интерактивные шпаргалки и короткие статьи.
+            Весь прогресс хранится локально в браузере.
           </p>
           <Flex gap={12} wrap className="home-hero__cta">
             <Link to="/tasks">
@@ -106,11 +119,11 @@ export function HomePage() {
       </section>
 
       <section className="home-tracks">
-        <h2 className="section-title">Три трека обучения</h2>
+        <h2 className="section-title">Треки обучения</h2>
         <p className="section-lead">Один фокус на секцию — выбирайте формат под настроение.</p>
         <Row gutter={[20, 20]} style={{ marginTop: 28 }}>
           {tracks.map((track) => (
-            <Col xs={24} md={8} key={track.to}>
+            <Col xs={24} sm={12} xl={6} key={track.to}>
               <Link to={track.to} className={`home-track home-track--${track.accent}`}>
                 <span className="home-track__icon">{track.icon}</span>
                 <h3>{track.title}</h3>
