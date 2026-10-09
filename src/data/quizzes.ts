@@ -787,6 +787,771 @@ export const quizzes: Quiz[] = [
       },
     ],
   },
+  {
+    id: 'css-basics-2',
+    title: 'CSS: база — 2-я часть',
+    description:
+      'Фоны, рамки, тени, позиционирование, псевдоклассы, overflow и лёгкая анимация.',
+    difficulty: 'medium',
+    tags: ['css', 'оформление', 'position'],
+    questions: [
+      {
+        id: 'css2-1',
+        prompt: 'Какие свойства задают фон элемента?',
+        options: [
+          'background-color',
+          'background-image',
+          'background-size',
+          'font-background',
+        ],
+        correctIndexes: [0, 1, 2],
+        explanation:
+          'Цвет, картинка и размер фона — валидные свойства. font-background не существует.',
+      },
+      {
+        id: 'css2-2',
+        prompt: 'Что делает border-radius: 50% у квадрата?',
+        options: [
+          'Превращает его в круг',
+          'Удаляет border',
+          'Делает элемент sticky',
+          'Добавляет тень',
+        ],
+        correctIndexes: [0],
+        explanation: 'У равной ширины и высоты 50% скругляет до круга.',
+      },
+      {
+        id: 'css2-3',
+        prompt: 'Чем box-shadow отличается от text-shadow?',
+        options: [
+          'box-shadow — тень блока, text-shadow — тень глифов текста',
+          'Это полные синонимы',
+          'text-shadow работает только на img',
+          'box-shadow нельзя размывать',
+        ],
+        correctIndexes: [0],
+        explanation: 'Разные цели: коробка vs текст.',
+      },
+      {
+        id: 'css2-4',
+        prompt: 'Какие значения position встречаются на практике?',
+        options: ['static', 'relative', 'absolute', 'float-fixed'],
+        correctIndexes: [0, 1, 2],
+        explanation:
+          'Ещё есть fixed и sticky. Значения float-fixed нет (float — отдельное свойство).',
+      },
+      {
+        id: 'css2-5',
+        prompt: 'Что верно про position: absolute?',
+        options: [
+          'Позиционируется относительно ближайшего non-static предка',
+          'Всегда относительно окна браузера',
+          'Нельзя задавать top/left',
+          'Отключает color',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Ищут предка с position ≠ static. Если нет — относительно начального containing block.',
+      },
+      {
+        id: 'css2-6',
+        prompt: 'Для чего чаще всего нужен z-index?',
+        options: [
+          'Управлять наложением слоёв у позиционированных элементов',
+          'Задать ширину колонок',
+          'Включить flex',
+          'Заменить margin',
+        ],
+        correctIndexes: [0],
+        explanation: 'z-index работает в контексте наложения (обычно при position ≠ static).',
+      },
+      {
+        id: 'css2-7',
+        prompt: 'Какие псевдоклассы полезны для интерактива и доступности?',
+        options: [':hover', ':focus', ':focus-visible', ':center'],
+        correctIndexes: [0, 1, 2],
+        explanation: ':hover/:focus/:focus-visible — да. Псевдокласса :center нет.',
+      },
+      {
+        id: 'css2-8',
+        prompt: 'Что делает overflow: hidden?',
+        options: [
+          'Обрезает содержимое, выходящее за границы',
+          'Увеличивает padding',
+          'Делает текст жирным',
+          'Включает горизонтальный скролл всегда',
+        ],
+        correctIndexes: [0],
+        explanation: 'Лишнее прячется. Для скролла — auto или scroll.',
+      },
+      {
+        id: 'css2-9',
+        prompt: 'Какое свойство плавно меняет, например, цвет за 0.2s?',
+        options: ['transition', 'animation-delay alone', 'transform-origin', 'will-change обязательно'],
+        correctIndexes: [0],
+        explanation:
+          'transition: color 0.2s ease. animation — для keyframes; will-change — подсказка оптимизации.',
+      },
+      {
+        id: 'css2-10',
+        prompt: 'Что умеет transform?',
+        options: [
+          'translate() — сдвинуть',
+          'scale() — масштабировать',
+          'rotate() — повернуть',
+          'margin() — задать отступ',
+        ],
+        correctIndexes: [0, 1, 2],
+        explanation: 'transform для геометрии. Отступы — через margin, не через transform.',
+      },
+      {
+        id: 'css2-11',
+        prompt: 'Как сделать полупрозрачный блок целиком (включая текст)?',
+        options: [
+          'opacity: 0.5',
+          'color: transparent только',
+          'visibility: collapse у flex-элемента как аналог',
+          'z-index: 0.5',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'opacity влияет на весь элемент и потомков. Для фона без текста — rgba()/hsla().',
+      },
+      {
+        id: 'css2-12',
+        prompt: 'Какие свойства оформляют рамку?',
+        options: ['border-width', 'border-style', 'border-color', 'outline-radius'],
+        correctIndexes: [0, 1, 2],
+        explanation:
+          'Ширина, стиль и цвет рамки. outline — отдельная обводка; outline-radius в стандарте нет.',
+      },
+      {
+        id: 'css2-13',
+        prompt: 'Чем outline часто удобнее border для :focus?',
+        options: [
+          'Не влияет на размер box model',
+          'Всегда толще border',
+          'Работает только в Firefox',
+          'Заменяет alt у картинок',
+        ],
+        correctIndexes: [0],
+        explanation: 'outline рисуется снаружи и не сдвигает раскладку — удобно для фокуса.',
+      },
+      {
+        id: 'css2-14',
+        prompt: 'Что делает object-fit: cover у img/video в фиксированном боксе?',
+        options: [
+          'Масштабирует с обрезкой, заполняя контейнер',
+          'Всегда показывает картинку целиком с полями',
+          'Удаляет src',
+          'Включает lazy-loading',
+        ],
+        correctIndexes: [0],
+        explanation: 'cover заполняет область (может обрезать). contain — целиком внутри.',
+      },
+      {
+        id: 'css2-15',
+        prompt: 'Какие значения cursor встречаются в UI?',
+        options: ['pointer', 'not-allowed', 'text', 'clickable'],
+        correctIndexes: [0, 1, 2],
+        explanation: 'pointer/not-allowed/text — стандарт. Значения clickable нет.',
+      },
+    ],
+  },
+  {
+    id: 'css-basics-3',
+    title: 'CSS: база — 3-я часть',
+    description:
+      'Flexbox, Grid, gap, медиазапросы и адаптивные единицы — раскладка страницы.',
+    difficulty: 'medium',
+    tags: ['css', 'flexbox', 'grid', 'responsive'],
+    questions: [
+      {
+        id: 'css3-1',
+        prompt: 'Как сделать flex-контейнер?',
+        options: [
+          'display: flex',
+          'display: inline-flex',
+          'position: flex',
+          'float: flex',
+        ],
+        correctIndexes: [0, 1],
+        explanation: 'flex или inline-flex. Отдельного position/float: flex нет.',
+      },
+      {
+        id: 'css3-2',
+        prompt: 'За что отвечает justify-content во flex-контейнере?',
+        options: [
+          'Распределение по главной оси',
+          'Распределение по поперечной оси',
+          'Только цвет текста',
+          'Только gap',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Главная ось — justify-content. Поперечная — align-items / align-content.',
+      },
+      {
+        id: 'css3-3',
+        prompt: 'Что делает align-items: center у flex-контейнера?',
+        options: [
+          'Центрирует элементы по поперечной оси',
+          'Всегда включает wrap',
+          'Удаляет margin у детей',
+          'Меняет order на 0',
+        ],
+        correctIndexes: [0],
+        explanation: 'Классика вертикального центрирования при flex-direction: row.',
+      },
+      {
+        id: 'css3-4',
+        prompt: 'Какие свойства управляют «гибкостью» flex-элемента?',
+        options: ['flex-grow', 'flex-shrink', 'flex-basis', 'flex-shadow'],
+        correctIndexes: [0, 1, 2],
+        explanation: 'Рост, сжатие и базовая ширина. Shorthand: flex. flex-shadow нет.',
+      },
+      {
+        id: 'css3-5',
+        prompt: 'Что делает flex-wrap: wrap?',
+        options: [
+          'Переносит элементы на новую строку при нехватке места',
+          'Обрезает текст многоточием',
+          'Включает Grid',
+          'Фиксирует ширину 100vw',
+        ],
+        correctIndexes: [0],
+        explanation: 'По умолчанию nowrap — элементы стараются уместиться в одну линию.',
+      },
+      {
+        id: 'css3-6',
+        prompt: 'Как включить CSS Grid у контейнера?',
+        options: [
+          'display: grid',
+          'display: inline-grid',
+          'display: flex-grid',
+          'position: grid',
+        ],
+        correctIndexes: [0, 1],
+        explanation: 'grid / inline-grid. Значения flex-grid нет.',
+      },
+      {
+        id: 'css3-7',
+        prompt: 'Что описывает grid-template-columns: 1fr 2fr?',
+        options: [
+          'Две колонки: вторая вдвое шире первой',
+          'Две строки одинаковой высоты',
+          'Отступ 1fr',
+          'Только для flex',
+        ],
+        correctIndexes: [0],
+        explanation: 'fr — доля свободного пространства в grid.',
+      },
+      {
+        id: 'css3-8',
+        prompt: 'Для чего удобен gap в flex/grid?',
+        options: [
+          'Равномерные промежутки между элементами без «лишних» margin',
+          'Замена padding у каждого ребёнка обязательно',
+          'Только для position: absolute',
+          'Отключение media queries',
+        ],
+        correctIndexes: [0],
+        explanation: 'gap задаёт расстояние между треками/flex-элементами.',
+      },
+      {
+        id: 'css3-9',
+        prompt: 'Какая конструкция — медиазапрос?',
+        options: [
+          '@media (max-width: 768px) { ... }',
+          '@query screen 768',
+          '@responsive 768px',
+          'media-width: 768px',
+        ],
+        correctIndexes: [0],
+        explanation: 'Стили по условию viewport/устройства пишут через @media.',
+      },
+      {
+        id: 'css3-10',
+        prompt: 'Какие единицы связаны с размером viewport?',
+        options: ['vw', 'vh', 'vmin', 'cm-only'],
+        correctIndexes: [0, 1, 2],
+        explanation: 'vw/vh/vmin/vmax — относительно окна. cm — абсолютная печатная единица.',
+      },
+      {
+        id: 'css3-11',
+        prompt: 'Чем min-width полезен в адаптивной вёрстке?',
+        options: [
+          'Не даёт элементу стать уже заданного порога',
+          'Всегда равна 100%',
+          'Отключает flex-shrink навсегда',
+          'Работает только в Grid',
+        ],
+        correctIndexes: [0],
+        explanation: 'Пара min-width / max-width ограничивает «резиновость» блоков.',
+      },
+      {
+        id: 'css3-12',
+        prompt: 'Что делает position: sticky?',
+        options: [
+          'Элемент «прилипает» при скролле в пределах предка',
+          'То же, что absolute без top',
+          'Фиксирует только на печати',
+          'Заменяет overflow: auto',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'sticky = относительное поведение до порога, затем как fixed в пределах контейнера.',
+      },
+      {
+        id: 'css3-13',
+        prompt: 'Чем Grid обычно удобнее Flex для «двухмерных» макетов?',
+        options: [
+          'Легко задавать и строки, и колонки одновременно',
+          'Grid запрещает gap',
+          'Flex не умеет центрировать',
+          'Grid работает только в IE6',
+        ],
+        correctIndexes: [0],
+        explanation: 'Flex силён в одном направлении; Grid — в сетке по двум осям.',
+      },
+      {
+        id: 'css3-14',
+        prompt: 'Какие подходы помогают мобильной вёрстке?',
+        options: [
+          'Гибкие ширины и max-width',
+          'Медиазапросы',
+          'Мета viewport',
+          'Фиксированная ширина 1920px у body',
+        ],
+        correctIndexes: [0, 1, 2],
+        explanation: 'Резина + @media + viewport. Жёсткие 1920px ломают телефоны.',
+      },
+      {
+        id: 'css3-15',
+        prompt: 'Что делает order у flex/grid-элемента?',
+        options: [
+          'Меняет визуальный порядок без изменения HTML',
+          'Задаёт z-index автоматически',
+          'Включает transition',
+          'Удаляет элемент из потока навсегда',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'order влияет на отрисовку. Для доступности лучше не ломать логический порядок без нужды.',
+      },
+    ],
+  },
+  {
+    id: 'css-flexbox',
+    title: 'CSS: Flexbox',
+    description:
+      'Оси, выравнивание, flex-шорткаты, wrap, align-self и типичные паттерны раскладки.',
+    difficulty: 'medium',
+    tags: ['css', 'flexbox', 'layout'],
+    questions: [
+      {
+        id: 'flex-1',
+        prompt: 'Кто является flex-контейнером, а кто — flex-элементом?',
+        options: [
+          'Контейнер — у кого display: flex; элементы — его прямые дети',
+          'Любой потомок на любой глубине — flex-элемент',
+          'flex задаётся только на html',
+          'Контейнер и элемент — одно и то же',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Flex действует на прямых детей. Внуки не становятся flex-items, пока сами не окажутся в своём flex-контейнере.',
+      },
+      {
+        id: 'flex-2',
+        prompt: 'Что делает flex-direction: column?',
+        options: [
+          'Главная ось становится вертикальной',
+          'Всегда включает wrap',
+          'Меняет HTML-порядок тегов',
+          'Отключает gap',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'При column главная ось сверху вниз; justify-content тогда работает по вертикали.',
+      },
+      {
+        id: 'flex-3',
+        prompt: 'Какие значения flex-direction валидны?',
+        options: ['row', 'row-reverse', 'column', 'column-reverse'],
+        correctIndexes: [0, 1, 2, 3],
+        explanation: 'Все четыре — стандартные направления главной оси.',
+      },
+      {
+        id: 'flex-4',
+        prompt: 'Чем align-content отличается от align-items?',
+        options: [
+          'align-content — распределение линий при wrap; align-items — элементы в линии',
+          'Это полные синонимы',
+          'align-content работает только без wrap',
+          'align-items только для Grid',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'align-content заметен, когда несколько рядов (flex-wrap: wrap) и есть свободное место по поперечной оси.',
+      },
+      {
+        id: 'flex-5',
+        prompt: 'Что означает запись flex: 1?',
+        options: [
+          'Элемент может расти и занимать свободное место (часто как 1 1 0%)',
+          'Ширина ровно 1px',
+          'order: 1',
+          'Только flex-shrink: 1 без роста',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Шорткат flex: 1 обычно даёт grow=1 — делит свободное пространство с соседями.',
+      },
+      {
+        id: 'flex-6',
+        prompt: 'Что задаёт flex-basis?',
+        options: [
+          'Базовый размер элемента до роста/сжатия',
+          'Только z-index',
+          'Цвет фона flex-линии',
+          'Обязательный min-width: 0',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'basis — стартовая ширина/высота вдоль главной оси (в зависимости от direction).',
+      },
+      {
+        id: 'flex-7',
+        prompt: 'Зачем на flex-элементе часто ставят min-width: 0?',
+        options: [
+          'Чтобы длинный контент мог сжаться, а не раздувать контейнер',
+          'Чтобы отключить flex',
+          'Это синоним width: 0',
+          'Только для Safari print',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'По умолчанию min-width: auto мешает сжиматься ниже размера контента — текст/картинки «распирают» ряд.',
+      },
+      {
+        id: 'flex-8',
+        prompt: 'Что делает align-self: flex-end у одного элемента?',
+        options: [
+          'Переопределяет align-items только для него',
+          'Меняет flex-direction контейнера',
+          'Включает position: absolute',
+          'Работает только с grid-area',
+        ],
+        correctIndexes: [0],
+        explanation: 'align-self — индивидуальное выравнивание на поперечной оси.',
+      },
+      {
+        id: 'flex-9',
+        prompt: 'Как центрировать один блок и по горизонтали, и по вертикали во flex?',
+        options: [
+          'justify-content: center и align-items: center',
+          'Только text-align: center',
+          'Только margin: auto у контейнера без flex',
+          'float: center',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Классический паттерн: display: flex + центрирование по обеим осям.',
+      },
+      {
+        id: 'flex-10',
+        prompt: 'Что делает justify-content: space-between?',
+        options: [
+          'Первый у края старта, последний у края конца, между ними — свободное место',
+          'Одинаковые поля со всех сторон у каждого',
+          'Склеивает элементы в центр',
+          'Добавляет gap: 0 принудительно',
+        ],
+        correctIndexes: [0],
+        explanation: 'Крайние элементы прижаты к краям, промежутки — между ними.',
+      },
+      {
+        id: 'flex-11',
+        prompt: 'Чем space-around отличается от space-evenly?',
+        options: [
+          'around — полполя с краёв; evenly — одинаковые интервалы везде, включая края',
+          'Разницы нет',
+          'evenly только в Grid',
+          'around игнорирует flex-wrap',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'При space-around внешние отступы вдвое меньше внутренних. space-evenly делит поровну.',
+      },
+      {
+        id: 'flex-12',
+        prompt: 'Какие свойства задают на контейнере, а не на элементе?',
+        options: [
+          'justify-content',
+          'align-items',
+          'flex-wrap',
+          'flex-grow',
+        ],
+        correctIndexes: [0, 1, 2],
+        explanation: 'grow/shrink/basis/align-self/order — у элемента. wrap и выравнивание линий — у контейнера.',
+      },
+      {
+        id: 'flex-13',
+        prompt: 'Что происходит при flex-direction: row-reverse?',
+        options: [
+          'Главная ось идёт справа налево, визуальный порядок зеркалится',
+          'HTML в DOM переписывается',
+          'Отключается клавиатура',
+          'Включается Grid автоматически',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Визуальный порядок меняется; для a11y осторожнее с reverse и order.',
+      },
+      {
+        id: 'flex-14',
+        prompt: 'Как сделать «шапка | контент растёт | футер» колонкой?',
+        options: [
+          'column + flex: 1 на среднем блоке',
+          'Только float: left у всех',
+          'grid запрещён рядом с flex навсегда',
+          'height: 1% у футера',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Колоночный flex на странице/секции и flex: 1 у main — частый sticky-footer паттерн.',
+      },
+      {
+        id: 'flex-15',
+        prompt: 'Что верно про gap во Flexbox?',
+        options: [
+          'Задаёт промежутки между элементами/линиями',
+          'Работает вместе с wrap',
+          'Заменяет собой padding контейнера полностью всегда',
+          'Существует только в Grid, во Flex запрещён',
+        ],
+        correctIndexes: [0, 1],
+        explanation:
+          'gap поддерживается и во Flex. Это не полная замена внутренних отступов контейнера.',
+      },
+      {
+        id: 'flex-16',
+        prompt: 'Запись flex: 0 0 200px означает…',
+        options: [
+          'Не расти, не сжиматься, базовая ширина 200px',
+          'Всегда 0px ширины',
+          'grow=200',
+          'Только для column',
+        ],
+        correctIndexes: [0],
+        explanation: 'Жёсткий размер 200px вдоль главной оси (если не мешают min/max).',
+      },
+    ],
+  },
+  {
+    id: 'css-grid',
+    title: 'CSS: Grid',
+    description:
+      'Треки, fr, template areas, размещение items, auto-fit/fill и выравнивание в сетке.',
+    difficulty: 'medium',
+    tags: ['css', 'grid', 'layout'],
+    questions: [
+      {
+        id: 'grid-1',
+        prompt: 'Из чего состоит CSS Grid на базовом уровне?',
+        options: [
+          'Строки и колонки (треки), на пересечении — ячейки',
+          'Только одна ось, как у Flex',
+          'Только float-колонки',
+          'Только table-layout',
+        ],
+        correctIndexes: [0],
+        explanation: 'Двумерная сетка: rows × columns.',
+      },
+      {
+        id: 'grid-2',
+        prompt: 'Что делает repeat(3, 1fr)?',
+        options: [
+          'Три равные доли свободного пространства',
+          'Три пикселя',
+          'Три media query',
+          'Только три строки named lines',
+        ],
+        correctIndexes: [0],
+        explanation: 'Кратко для grid-template-columns/rows: три одинаковых fr-трека.',
+      },
+      {
+        id: 'grid-3',
+        prompt: 'Чем fr отличается от % в grid-треках?',
+        options: [
+          'fr делит свободное место после фиксированных треков и gap',
+          '% и fr всегда считаются одинаково',
+          'fr запрещён в rows',
+          'fr работает только с flex',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'fr удобнее для «остатка»; % считаются от размера контейнера и хуже дружат со сложными треками.',
+      },
+      {
+        id: 'grid-4',
+        prompt: 'Что описывает minmax(200px, 1fr)?',
+        options: [
+          'Трек не уже 200px, но может расти долей fr',
+          'Всегда ровно 200px',
+          'Максимум 200px и минимум 1fr одновременно как константа',
+          'Отключает auto-placement',
+        ],
+        correctIndexes: [0],
+        explanation: 'Частый паттерн резиновых колонок с нижним порогом.',
+      },
+      {
+        id: 'grid-5',
+        prompt: 'Для чего grid-template-areas?',
+        options: [
+          'Именовать зоны сетки и класть в них элементы через grid-area',
+          'Только анимация областей',
+          'Замена @media',
+          'Отключение gap',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Рисуете раскладку строками "header header" / "nav main" и назначаете детям grid-area: header.',
+      },
+      {
+        id: 'grid-6',
+        prompt: 'Что делают grid-column: 1 / 3?',
+        options: [
+          'Элемент занимает колонки от линии 1 до линии 3 (две колонки)',
+          'Ставит order: 3',
+          'Создаёт 3fr',
+          'Только margin-left: 1',
+        ],
+        correctIndexes: [0],
+        explanation: 'Указываются линии сетки: старт / конец.',
+      },
+      {
+        id: 'grid-7',
+        prompt: 'Чем span 2 полезен в grid-column?',
+        options: [
+          'Растянуть элемент на две колонки',
+          'Сделать z-index: 2',
+          'Включить subgrid',
+          'Задать gap: 2',
+        ],
+        correctIndexes: [0],
+        explanation: 'Например: grid-column: span 2.',
+      },
+      {
+        id: 'grid-8',
+        prompt: 'В чём идея auto-fit vs auto-fill в repeat?',
+        options: [
+          'Оба набирают столько колонок, сколько влезает; fit схлопывает пустые треки',
+          'auto-fill запрещён в Chrome',
+          'Разницы нет никогда',
+          'auto-fit работает только с px, не с minmax',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Классика: repeat(auto-fit, minmax(240px, 1fr)) — адаптивная сетка карточек.',
+      },
+      {
+        id: 'grid-9',
+        prompt: 'Что делает justify-items: center в Grid?',
+        options: [
+          'Выравнивает содержимое ячеек по горизонтали (ось строк)',
+          'То же, что justify-content у всего грида всегда',
+          'Только для flex-элементов',
+          'Меняет template areas',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'justify-items/align-items — внутри ячеек. justify-content/align-content — вся сетка в контейнере.',
+      },
+      {
+        id: 'grid-10',
+        prompt: 'Когда заметны justify-content / align-content у grid-контейнера?',
+        options: [
+          'Когда суммарный размер треков меньше контейнера',
+          'Только если нет ни одной колонки',
+          'Только при display: flex',
+          'Всегда перекрывают width: 100%',
+        ],
+        correctIndexes: [0],
+        explanation: 'Свободное место вокруг всей сетки распределяют content-свойства.',
+      },
+      {
+        id: 'grid-11',
+        prompt: 'Что такое grid-auto-rows?',
+        options: [
+          'Размер неявно создаваемых строк',
+          'Только имена areas',
+          'Шорткат для flex-basis',
+          'Псевдокласс :rows',
+        ],
+        correctIndexes: [0],
+        explanation:
+          'Если элементов больше явного шаблона, появляются неявные треки — их размер задаёт auto-rows/columns.',
+      },
+      {
+        id: 'grid-12',
+        prompt: 'Какие единицы/функции часто встречаются в треках?',
+        options: ['fr', 'minmax()', 'repeat()', 'flex-grow'],
+        correctIndexes: [0, 1, 2],
+        explanation: 'fr/minmax/repeat — язык Grid. flex-grow — свойство Flex-элемента.',
+      },
+      {
+        id: 'grid-13',
+        prompt: 'Что делает place-items: center?',
+        options: [
+          'Шорткат для align-items и justify-items: center',
+          'Центрирует только текст через text-align',
+          'Создаёт одну колонку 1fr',
+          'Включает masonry во всех браузерах',
+        ],
+        correctIndexes: [0],
+        explanation: 'Удобно центрировать содержимое всех ячеек одной записью.',
+      },
+      {
+        id: 'grid-14',
+        prompt: 'Можно ли совмещать Grid и Flex на одной странице?',
+        options: [
+          'Да: например, страница на Grid, навбар на Flex',
+          'Нет: только что-то одно на документ',
+          'Только если отключить gap',
+          'Только внутри table',
+        ],
+        correctIndexes: [0],
+        explanation: 'Инструменты дополняют друг друга на разных уровнях вложенности.',
+      },
+      {
+        id: 'grid-15',
+        prompt: 'Что описывает запись grid-template-columns: 200px 1fr auto?',
+        options: [
+          'Фиксированная, доля остатка и по содержимому',
+          'Три равные колонки',
+          'Только для строк',
+          'Невалидный CSS',
+        ],
+        correctIndexes: [0],
+        explanation: 'Смешанные треки — обычная практика сайдбар + контент + компактная колонка.',
+      },
+      {
+        id: 'grid-16',
+        prompt: 'Какие способы разместить item в конкретной зоне верны?',
+        options: [
+          'grid-area: header',
+          'grid-row: 1 / 2 вместе с grid-column',
+          'float: grid-area',
+          'align-self без координат всегда достаточно для зоны header',
+        ],
+        correctIndexes: [0, 1],
+        explanation:
+          'Именованная area или линии row/column. float: grid-area нет; align-self только выравнивает в ячейке.',
+      },
+    ],
+  },
 ]
 
 export function getQuizById(id: string): Quiz | undefined {

@@ -69,6 +69,34 @@ const quizRankTitles: Record<string, Record<RankTier, string>> = {
     learning: 'База CSS взята — стиль уже с тобой!',
     fighter: 'Каскад сопротивлялся, но ты победил!',
   },
+  'css-basics-2': {
+    perfect: 'Теперь ты сенсей теней и слоёв!',
+    great: 'Теперь ты мастер position и :hover!',
+    solid: 'Теперь ты уверенный стилист интерфейса!',
+    learning: 'Оформление поддалось — так держать!',
+    fighter: 'z-index не сломал тебя — уважение!',
+  },
+  'css-basics-3': {
+    perfect: 'Теперь ты сенсей раскладки!',
+    great: 'Теперь ты архитектор Flex и Grid!',
+    solid: 'Теперь ты адаптивный верстальщик!',
+    learning: 'Сетка покорена — ты уже не новичок!',
+    fighter: 'Медиазапросы сдались твоему упорству!',
+  },
+  'css-flexbox': {
+    perfect: 'Теперь ты Flexbox-сенсей!',
+    great: 'Теперь ты ниндзя главной оси!',
+    solid: 'Теперь ты уверенный flex-верстальщик!',
+    learning: 'Оси покорены — так держать!',
+    fighter: 'flex-shrink не согнул тебя!',
+  },
+  'css-grid': {
+    perfect: 'Теперь ты Grid-сенсей!',
+    great: 'Теперь ты мастер треков и areas!',
+    solid: 'Теперь ты уверенный сеточный архитектор!',
+    learning: 'Сетка сложилась — ты на уровне!',
+    fighter: 'fr и minmax сдались твоему упорству!',
+  },
 }
 
 const defaultRankTitles: Record<RankTier, string> = {
